@@ -5,7 +5,7 @@
 import pandas as pd
 import re
 
-f = open('./education_data/education.txt')
+f = open('../zhilian/education_data/education.txt')
 filt = re.compile('\n')
 
 def filt_data():
@@ -32,8 +32,11 @@ def save_to_csv():
     edu_list = filt_data()
     edu_df = pd.DataFrame(edu_list)
     edu_df.columns = ['edu','count']
-    edu_df.to_csv('./education_data/raw_edu.csv',index=None)
+    edu_df.to_csv('../zhilian/education_data/raw_edu.csv',index=None)
     print('转存csv成功')
+
+def run_main_zhilian():
+    save_to_csv()
 
 if __name__ == '__main__':
     save_to_csv()

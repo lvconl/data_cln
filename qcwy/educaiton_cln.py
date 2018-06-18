@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import re
 
-f = open('./education_data/education.txt')
+f = open('../qcwy/education_data/education.txt')
 file = re.compile('\n')
 
 def edu_to_list():
@@ -34,14 +34,14 @@ def split_edu_count(edu_list):
         result_list.append(tmp)
     return result_list
 
-def run_main():
+def run_main_qcwy():
     edu_list = edu_to_list()
     split_list = split_edu_count(edu_list)
     edu_df = pd.DataFrame(split_list)
     edu_df.columns = ['edu','count']
-    edu_df.to_csv('./education_data/raw_edu.csv',index=None)
+    edu_df.to_csv('../qcwy/education_data/raw_edu.csv',index=None)
     print('转存csv成功')
 
 
 if __name__ == '__main__':
-    run_main()
+    run_main_qcwy()

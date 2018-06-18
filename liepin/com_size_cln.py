@@ -5,7 +5,7 @@
 import pandas as pd
 import re
 
-f = open('./com_size_data/com_size.txt')
+f = open('../liepin/com_size_data/com_size.txt')
 def rece_size():
     '''
     获得与前程无忧相同格式的数据，便于合并分析
@@ -27,8 +27,11 @@ def save_to_csv():
     com_size_list = rece_size()
     size_df = pd.DataFrame(com_size_list)
     size_df.columns = ['size','count']
-    size_df.to_csv('./com_size_data/raw_cln_com_size.csv', index=None)
+    size_df.to_csv('../liepin/com_size_data/raw_cln_com_size.csv', index=None)
     print('转存csv成功！')
+
+def run_main_liepin():
+    save_to_csv()
 
 if __name__ == '__main__':
     save_to_csv()

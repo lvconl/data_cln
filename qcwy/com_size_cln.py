@@ -8,7 +8,7 @@
 import pandas as pd
 import re
 
-f = open('./com_size_data/com_size.txt')
+f = open('../qcwy/com_size_data/com_size.txt')
 
 
 def load_data_to_list():
@@ -41,15 +41,15 @@ def save_to_csv():
     com_size_list = split_size_count()
     size_df = pd.DataFrame(com_size_list)
     size_df.columns = ['size','count']
-    size_df.to_csv('./com_size_data/raw_com_size.csv',index=None)
+    size_df.to_csv('../qcwy/com_size_data/raw_com_size.csv',index=None)
     print('转存csv成功')
 
 
-def run_main():
+def run_main_qcwy():
     save_to_csv()
     com_size_list = split_size_count()
     for item in com_size_list:
         print('{}\t{}'.format(item[0],item[1]))
 
 if __name__ == '__main__':
-    run_main()
+    run_main_qcwy()

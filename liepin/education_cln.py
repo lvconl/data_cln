@@ -7,7 +7,7 @@ import re
 
 
 filt = re.compile('\n')
-f = open('./education_data/education.txt')
+f = open('../liepin/education_data/education.txt')
 
 
 def load_data_from_txt():
@@ -28,8 +28,11 @@ def save_to_csv():
     edu_list = load_data_from_txt()
     edu_df = pd.DataFrame(edu_list)
     edu_df.columns = ['edu','count']
-    edu_df.to_csv('./education_data/raw_edu.csv',index=None)
+    edu_df.to_csv('../liepin/education_data/raw_edu.csv',index=None)
     print('转存csv成功')
+
+def run_main_liepin():
+    save_to_csv()
 
 if __name__ == '__main__':
     save_to_csv()

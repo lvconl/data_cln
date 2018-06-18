@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # __author__:吕从雷
+
 import numpy as np
 import pandas as pd
+import os
 
 '''
 将原始数据转换为标准化的数据
@@ -10,10 +12,24 @@ import pandas as pd
 原始数据  1000-1500	1
 标准化数据   1250.0,1
 '''
+file_path = '../zhilian/data/salary_filte.txt'
 
+f = open('../zhilian/data/salary.txt','r')
 
-f = open('data/salary.txt','r')
-def run_main():
+def rang_flite():
+    line = f.readline()
+    s = open(file_path,'a')
+    while line:
+        if (line == '1000元以下') and (line == '25000元以上'):
+            print(line)
+            continue
+        if (not line[0] == '学') and (not line[0] == '数') and (not line[0] == '深') and (not line[0] == '经') and (not line[0] == '面') and (not line[0] == '\t') and (not line.split('\t')[0][len(line.split('\t')[0]) - 1] == '上') and(not line.split('\t')[0][len(line.split('\t')[0]) - 1] == '下'):
+            s.write(line)
+        line = f.readline()
+
+def run_main_zhilian():
+    rang_flite()
+    f = open(file_path)
     line = f.readline()
     salary_avg_count_list = []
     salary_avglist = []
@@ -30,9 +46,12 @@ def run_main():
         list.append(salary_count)
         salary_avg_count_list.append(list)
         line = f.readline()
-    print(salary_avg_count_list)
-
 
     data = pd.DataFrame(salary_avg_count_list)
+    print(data)
     data.columns = ['rang','count']
-    data.to_csv('cln_data/cln_salary.csv',index=None)
+    print(data)
+    data.to_csv('../zhilian/cln_data/cln_salary.csv',index=None)
+
+if __name__ == '__main__':
+    run_main_zhilian()

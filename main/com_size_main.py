@@ -2,8 +2,10 @@
 # -*- coding:utf-8 -*-
 # __author__:吕从雷
 
-from zhilian.salary_cln import run_main
 import pandas as pd
+
+from liepin.com_size_cln import run_main_liepin
+from qcwy.com_size_cln import run_main_qcwy
 
 def load_data():
     '''
@@ -32,4 +34,6 @@ def size_static():
     print('10000以上:{}'.format(sum(more_lion.values.tolist())))
 
 if __name__ == '__main__':
+    run_main_liepin()
+    run_main_qcwy()
     size_static()

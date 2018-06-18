@@ -11,10 +11,10 @@ def read_to_csv():
     读取原始数据并存为csv
     :return: None
     '''
-    data = pd.read_table('location_data/location_data.txt')
+    data = pd.read_table('../liepin/location_data/location_data.txt')
     data.columns = ['location','count']
     data = data.dropna()
-    data.to_csv('location_data/raw_location.csv',index=None)
+    data.to_csv('../liepin/location_data/raw_location.csv',index=None)
 
 def to_coder(location):
     '''
@@ -44,7 +44,7 @@ def to_coder(location):
 
 def geo_coder_conver():
 
-    data = pd.read_csv('location_data/raw_location.csv')
+    data = pd.read_csv('../liepin/location_data/raw_location.csv')
     address_list = data['location'].values.tolist()
     count_list = data['count'].values.tolist()
     print('共{}条数据'.format(len(address_list)))
@@ -71,6 +71,10 @@ def geo_coder_conver():
     for lng_lat,count in zip(city_lng_lat,city_value):
         print('{\"lng\":' + str(lng_lat[0]) +',\"lat\":'+ str(lng_lat[1]) + ',\"count\":' + str(count[1]) + '},')
 
+
+def run_main_liepin():
+    read_to_csv()
+    geo_coder_conver()
 
 if __name__ == '__main__':
     read_to_csv()

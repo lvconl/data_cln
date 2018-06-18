@@ -11,9 +11,9 @@ def read_to_csv():
     读取原始数据并存为csv
     :return: None
     '''
-    data = pd.read_table('location_data/location_data.txt')
+    data = pd.read_table('../qcwy/location_data/location_data.txt')
     data = data.dropna()
-    data.to_csv('location_data/raw_location.csv',index=None)
+    data.to_csv('../qcwy/location_data/raw_location.csv',index=None)
 
 def to_coder(location):
     '''
@@ -26,10 +26,12 @@ def to_coder(location):
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36',
     }
-    api_key = 'quKzPcQBDVY3awgLpsB6sefjuwT64m0i'
+    #api_key = 'quKzPcQBDVY3awgLpsB6sefjuwT64m0i'
+    api_key = 'ww0usZ7UsbDdfhIpQPdRtixP'
     url = 'http://api.map.baidu.com/geocoder/v2/?output=json&ak={}&address={}'.format(api_key, location)
     data = requests.get(url,headers = headers)
     result = data.json()
+    print(result)
     #纬度
     lng = result['result']['location']['lng']
     #经度
@@ -40,7 +42,7 @@ def to_coder(location):
 
 def geo_coder_conver():
 
-    data = pd.read_csv('location_data/raw_location.csv')
+    data = pd.read_csv('../qcwy/location_data/raw_location.csv')
     address_list = data['location'].values.tolist()
     count_list = data['count'].values.tolist()
     print('共{}条数据'.format(len(address_list)))
@@ -67,6 +69,8 @@ def geo_coder_conver():
     for lng_lat,count in zip(city_lng_lat,city_value):
         print('{\"lng\":' + str(lng_lat[0]) +',\"lat\":'+ str(lng_lat[1]) + ',\"count\":' + str(count[1]) + '},')
 
+def run_main_qcwy():
+    geo_coder_conver()
 
 if __name__ == '__main__':
     geo_coder_conver()

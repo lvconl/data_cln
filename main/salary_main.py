@@ -5,6 +5,10 @@
 import pandas as pd
 import os
 
+from zhilian.salary_cln import run_main_zhilian
+from liepin.salary_cln import run_main_liepin
+from qcwy.salary_cln import cln_main
+
 '''
 来自不同网站的数据的路径
 '''
@@ -72,5 +76,11 @@ def rang_count():
     print('25000以上:' + str(thirteen_count_df.apply(sum)['count']))
 
 
-if __name__ == '__main__':
+def run_main():
+    run_main_zhilian()
+    run_main_liepin()
+    cln_main()
     rang_count()
+
+if __name__ == '__main__':
+    run_main()
