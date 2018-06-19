@@ -74,6 +74,12 @@ def rang_count():
     print('23000-25000: ' + str(twelen_count_df.apply(sum)['count']))
     thirteen_count_df = data_df[data_df['rang'] > 25000]
     print('25000以上:' + str(thirteen_count_df.apply(sum)['count']))
+    salary_list = data_df['rang'].values.tolist()
+    count_list = data_df['count'].values.tolist()
+    acc = 0
+    for salary,count in zip(salary_list,count_list):
+        acc += salary * count
+    print('平均工资:{}'.format(acc / sum(count_list)))
 
 
 def run_main():
