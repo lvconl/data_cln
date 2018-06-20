@@ -7,7 +7,7 @@ import re
 
 filt = re.compile('\n')
 
-f = open('./workyear_data/workyear.txt')
+f = open('../liepin/workyear_data/workyear.txt')
 
 def load_data():
     '''
@@ -26,9 +26,11 @@ def save_to_csv():
     work_list = load_data()
     work_df = pd.DataFrame(work_list)
     work_df.columns = ['work','count']
-    work_df.to_csv('./workyear_data/raw_work.csv',index=None)
+    work_df.to_csv('../liepin/workyear_data/raw_work.csv',index=None)
     print('转存csv成功')
 
+def run_main_liepin():
+    save_to_csv()
 
 if __name__ == '__main__':
     save_to_csv()

@@ -4,7 +4,7 @@
 
 import pandas as pd
 
-f = open('./workyear_data/workyear.txt')
+f = open('../qcwy/workyear_data/workyear.txt')
 
 
 def load_data():
@@ -25,8 +25,11 @@ def sava_to_csv():
     work_list = load_data()
     work_df = pd.DataFrame(work_list)
     work_df.columns = ['work','count']
-    work_df.to_csv('./workyear_data/raw_work.csv',index=None)
+    work_df.to_csv('../qcwy/workyear_data/raw_work.csv',index=None)
     print('转存csv成功')
+
+def run_main_qcwy():
+    sava_to_csv()
 
 if __name__ == '__main__':
     sava_to_csv()

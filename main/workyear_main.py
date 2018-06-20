@@ -5,6 +5,10 @@
 import pandas as pd
 import os
 
+from zhilian.workyear_cln import run_main_zhilian
+from liepin.workyear_cln import run_main_liepin
+from qcwy.workyear_cln import run_main_qcwy
+
 zhilian_path = '../zhilian/workyear_data/'
 qcwy_path = '../qcwy/workyear_data/'
 liepin_path = '../liepin/workyear_data/'
@@ -37,7 +41,11 @@ def year_static():
     other_df = toget_df[toget_df['work'] == '经验不限']
     print('经验不限:{}'.format(sum(other_df['count'].values.tolist())))
 
-
+def run_main():
+    run_main_zhilian()
+    run_main_qcwy()
+    run_main_liepin()
 
 if __name__ == '__main__':
+    run_main()
     year_static()

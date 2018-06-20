@@ -15,7 +15,7 @@ def rang_to_avg(salary_rang_str):
     max_min_list = salary_str.split('-')
     min_value = int(max_min_list[0])
     max_value = int(max_min_list[1])
-    avg = float(min_value + max_value) * 10000 / 24
+    avg = float(float(min_value) + float(max_value)) * 10000 / 24
     return avg
 def run_main_liepin():
     save_to_csv()

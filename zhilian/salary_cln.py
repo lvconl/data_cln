@@ -18,7 +18,7 @@ f = open('../zhilian/data/salary.txt','r')
 
 def rang_flite():
     line = f.readline()
-    s = open(file_path,'a')
+    s = open(file_path,'w')
     while line:
         if (line == '1000元以下') and (line == '25000元以上'):
             print(line)
@@ -29,7 +29,7 @@ def rang_flite():
 
 def run_main_zhilian():
     rang_flite()
-    f = open(file_path)
+    f = open('../zhilian/data/salary_filte.txt','r')
     line = f.readline()
     salary_avg_count_list = []
     salary_avglist = []
